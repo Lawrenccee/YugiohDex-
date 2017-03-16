@@ -10,12 +10,13 @@ YugiohDex is a mobile application where users can create an account in order to 
 * Packaging/Porting: / OS X / Windows / Linux
 
 ## Minification & Bundling
-Our boostrap that was used was minified.
+Our Twitter Bootstrap that was used was the minified version. For JS we used jscompress in order to minify and compress our JS files for faster loading.
 
 ###### CSS
+Our CSS was all made by using a minified Twitter Bootstrap this increased performance by only having to request for one file for the CSS.
 
 ###### JavaScript
-With CodeKit, we were able to concatenate all of our JS files into a single, minified file (with a few exceptions). Like with our CSS files, this vastly improved our performance and decreased the size of the request contents as well. Again, this limited the number of HTTP requests we had to make to retrieve our necessary files. With our CSS and JS bundling/minification, we only needed to make two primary requests for our primary files. However, with some of the services we used, we had to include inline scripts in order to load them immediately.
+We ran into a problem with JS by trying to minify all of the files and bundle them into one JS file in order to increase performance. Instead, we minified each file itself and used those minified JS files to be referenced to. This means that our code still has to make a lot of network requests to get each of the JS files, but each of those files grabbed are minified/compressed.
 
 ## Images 
 The images used were uniform images that all had the same aspect ratios to fit our display and make everything uniform.
@@ -26,10 +27,14 @@ The images used were uniform images that all had the same aspect ratios to fit o
 We used an Android Tablet (Samsung Galaxy Tab 3) to test the load times of our website after minification using a 3G network throttle. On our laptops we have also viewed the website on Firefox and Google Chrome to make sure basic functionality was correct. Since there are differences with the aesthetics of browsers appearances might slightly vary.
 
 ## Performance & Design
-* Used minified our CSS/JS
+* Used minified our CSS/JS for faster loading
 * Simple design for user to easily distinguish buttons and unpressable elements.
 
 ![App Decks](/public/img/decks.png)
+
+## File Organization and Architecture
+* Files were named using Pascal Case
+* Files were organized using by the type of file, separating HTML, JS, and CSS files in their respective folders. Any images were put into an image folder that was referenced to within the other files to grab and display those images. 
 
 ## Known Issues, Bugs, & Limitations
 * Images are not compressed: Pages can take a long time to load because the images on the database are not compressed.
