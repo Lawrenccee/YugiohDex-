@@ -9,8 +9,6 @@ YugiohDex is a mobile application where users can create an account in order to 
 * Backend: Firebase
 * Packaging/Porting: / OS X / Windows / Linux
 
-![App Home](/public/img/home.png)
-
 ## Minification & Bundling
 Our boostrap that was used was minified.
 
@@ -22,7 +20,7 @@ With CodeKit, we were able to concatenate all of our JS files into a single, min
 ## Images 
 The images used were uniform images that all had the same aspect ratios to fit our display and make everything uniform.
 
-![App Decks](/public/img/decks.png)
+![App Home](/public/img/home.png)
 
 ## Testing & Usability
 We used an Android Tablet (Samsung Galaxy Tab 3) to test the load times of our website after minification using a 3G network throttle. On our laptops we have also viewed the website on Firefox and Google Chrome to make sure basic functionality was correct. Since there are differences with the aesthetics of browsers appearances might slightly vary.
@@ -30,6 +28,8 @@ We used an Android Tablet (Samsung Galaxy Tab 3) to test the load times of our w
 ## Performance & Design
 * Used minified our CSS/JS
 * Simple design for user to easily distinguish buttons and unpressable elements.
+
+![App Decks](/public/img/decks.png)
 
 ## Known Issues, Bugs, & Limitations
 * Images are not compressed: Pages can take a long time to load because the images on the database are not compressed.
