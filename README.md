@@ -9,7 +9,10 @@ YugiohDex is a mobile application where users can create an account in order to 
 * Backend: Firebase
 * Packaging/Porting: / OS X / Windows / Linux
 
+![App Home](/public/img/home.png)
+
 ## Minification & Bundling
+Our boostrap that was used was minified.
 
 ###### CSS
 
@@ -17,6 +20,9 @@ YugiohDex is a mobile application where users can create an account in order to 
 With CodeKit, we were able to concatenate all of our JS files into a single, minified file (with a few exceptions). Like with our CSS files, this vastly improved our performance and decreased the size of the request contents as well. Again, this limited the number of HTTP requests we had to make to retrieve our necessary files. With our CSS and JS bundling/minification, we only needed to make two primary requests for our primary files. However, with some of the services we used, we had to include inline scripts in order to load them immediately.
 
 ## Images 
+The images used were uniform images that all had the same aspect ratios to fit our display and make everything uniform.
+
+![App Decks](/public/img/decks.png)
 
 ## Testing & Usability
 We used an Android Tablet (Samsung Galaxy Tab 3) to test the load times of our website after minification using a 3G network throttle. On our laptops we have also viewed the website on Firefox and Google Chrome to make sure basic functionality was correct. Since there are differences with the aesthetics of browsers appearances might slightly vary.
