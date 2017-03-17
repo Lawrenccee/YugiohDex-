@@ -29,7 +29,7 @@ function googleSignInRegister(){
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
         alert(errorMessage);
-        window.location = "./register.html"; // If fail refresh
+        window.location = "./Register.html"; // If fail refresh
     });
     return;
 }
@@ -44,17 +44,17 @@ function validateRegister() {
 
     if(!email.includes("@")) {
         alert("Needs to be a valid email address!");
-        window.location = "./register.html"; // If fail refresh
+        window.location = "./Register.html"; // If fail refresh
          return;
     }
     if(password.length < 8) {
          alert("Password needs to be at least 8 characters!");
-        window.location = "./register.html"; // If fail refresh
+        window.location = "./Register.html"; // If fail refresh
          return;
     }
     if(password !== confirm) {
         alert("Passwords do not match!");
-        window.location = "./register.html"; // If fail refresh
+        window.location = "./Register.html"; // If fail refresh
          return;
     }
 
@@ -83,6 +83,6 @@ function validateRegister() {
         var errorCode = error.code;
         var errorMessage = error.message;
         alert(errorMessage);
-        window.location = "./register.html"; // If fail refresh
+        window.location = "./Register.html"; // If fail refresh
     });
 }
