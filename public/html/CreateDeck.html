@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- Bootstrap CSS Components-->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <!-- Firebase Components-->
+    <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+    <script src="../js/Initialize.min.js"></script>
+    <title>View Decks</title>
+    <style>
+        body {
+            padding-top: 70px;
+        }
+        .navbar {
+            margin-bottom:0px;
+            border-radius:0px;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar-->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" id="homeLogo" href="./index.html">YugiohDex</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="./index.html">Cards <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="./Decks.html">Decks</a></li>
+                <li><a href="News.html">News</a></li>
+            </ul>
+            <ul id="login" class="nav navbar-nav navbar-right">
+                <li><a href="./Login.html">Login</a></li>
+                <li><a href="./Register.html">Register</a></li>
+            </ul>
+            <ul id="logout" class="nav navbar-nav navbar-right">
+                <li><a id="userGreeting" href="#"></a></li>
+                <li><a onclick="signOut()">Logout</a></li>
+            </ul>
+            <script src="../js/Logout.js"></script>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<!-- Button Group Toggle -->
+<div class="container text-center">
+    <div class="btn-group text-center" role="group">
+        <a  id="goBack" class="btn btn-default" href="./Decks.html">View Decks</a>
+        <a  class="btn btn-default active" href="#">Create Decks</a>
+    </div>
+</div>
+<br/>
+
+<!-- Card Directory Form for Search -->
+<div class="container well">
+    <form class="form-group">
+        <div class="col-sm-4 col-xs-6">
+            <label for="card_name">Name</label>
+            <input id="card_name" class="form-control" type="text" placeholder="cardname"/>
+        </div>
+        <div class="col-sm-1 col-xs-2">
+            <label for="attack_pt">Attack</label>
+            <input id="attack_pt" class="form-control" type="text" placeholder="0"/>
+        </div>
+        <div class="col-sm-1 col-xs-2">
+            <label for="defense_pt">Defense</label>
+            <input id="defense_pt" class="form-control" type="text" placeholder="0"/>
+        </div>
+        <div class="col-sm-2 col-xs-4">
+            <label for="card_type">Type</label>
+            <select id="card_type" class="form-control">
+                <option>Monster</option>
+                <option>Trap</option>
+                <option>Spell</option>
+            </select>
+        </div>
+        <div class="col-sm-2 col-xs-4">
+            <label for="card_format">Format</label>
+            <select class="form-control" id="card_format">
+                <option>TCG</option>
+                <option>OCG</option>
+                <option>Both</option>
+            </select>
+        </div>
+        <div class="col-sm-2 col-xs-4">
+            <label for="search_btn">Search</label>
+            <input type="button" id="search_btn" class="form-control btn btn-primary" value="Submit"  />
+        </div>
+        <br/>
+        <br/><br/><br/>
+        <div class="col-sm-8">
+            <label for="deckName">Name</label>
+            <input id="deckName" class="form-control" type="text" placeholder="Enter Deck Name"/>
+        </div>
+        <div class="col-sm-4">
+            <label for="saveBtn">Save Your Deck</label>
+            <input id="saveBtn" class="form-control btn btn-primary" value="Save Deck" />
+        </div>
+    </form>
+</div>
+
+<!-- Search Results + Current Deck -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h4 class="text-center">Search Results</h4>
+            <!-- row -->
+            <div class="row" id="createDeckRow">
+
+            </div>
+            <div class="row" id="currentDeck">
+                <h4 class="text-center">Current Deck</h4>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+
+            <!--<button  class="btn btn-link"><img src="../images/dragon.jpg" id="featuredCard" alt="dragon" class="img-responsive"></button>-->
+            <div class="row">
+
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <h4 class="text-center">Selected Card</h4>
+                    <button  class="btn btn-link"><img data-target="#card_detail_modal" data-toggle="modal" src="../images/red.jpg" id="featuredCard" class="img-responsive"></button>
+
+                </div>
+                <div class="col-sm-4"></div>
+                <div class="col-sm-6">
+                    <button id="deckAddButton" class="btn btn-primary btn-lg" style="width: 100%">Add Card</button>
+                </div>
+                <div class="col-sm-6">
+                    <button id="deckRemoveButton" class="btn btn-danger btn-lg" style="width: 100%">Remove Card</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<br/><br/>
+
+<!-- Form for Deck Update -->
+<div class="container well" style="margin-top:70px">
+    <form class="form-group">
+        <!--<div class="col-sm-8">-->
+            <!--<label for="deckName">Name</label>-->
+            <!--<input id="deckName" class="form-control" type="text" placeholder="Enter Deck Name"/>-->
+        <!--</div>-->
+        <!--<div class="col-sm-4">-->
+            <!--<label for="saveBtn">Save Your Deck</label>-->
+            <!--<input id="saveBtn" class="form-control btn btn-primary" value="Save Deck" />-->
+        <!--</div>-->
+    </form>
+</div>
+
+<div class="modal fade" id="card_detail_modal" tabindex="-1" role="dialog" aria-labelledby="card_detail_label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="nameValueCD">Red Eyes B. Dragon</h4>
+            </div>
+            <div class="modal-body container">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-2">
+                        <img id="modalImageCD" src="" alt="dragon" class="img-responsive" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer text-left">
+                <p class="text-left"><b>Attack: </b></p>
+                <p class="text-left" id="attackValueCD">2400</p>
+                <p class="text-left"><b>Defense: </b></p>
+                <p class="text-left" id="defenseValueCD">2000</p>
+                <p class="text-left"><b>Description: </b></p>
+                <p class="text-left" id="descriptionValueCD">A ferocious dragon with a deadly attack</p>
+
+                <!--<p class="text-left"><b>Attack: </b> X000 &nbsp; <b> Defense: </b> X000</p>-->
+                <!--<p class="text-left"><b>Description:</b> The heavens twist and the thunder roars, signaling the coming of this ancient creature, and the dawn of true power</p>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<br/><br/><br/>
+
+
+
+<!--For Bootstrap JS components -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+<!-- Custom Javascript -->
+<script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+<script src="../js/CreateDeck.js"></script>
+<script src="../js/DeckSearch.min.js"></script>
+<script src="../js/Display.min.js"></script>
+<!--<script src="../YugiohDex.min.js"></script>-->
+</body>
+</html>

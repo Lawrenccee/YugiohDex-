@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- Bootstrap CSS Components-->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <!-- Firebase Components-->
+    <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+    <script src="../js/Initialize.min.js"></script>
+    <title>News</title>
+    <style>
+        body {
+            padding-top: 70px;
+        }
+        .navbar {
+            margin-bottom:0px;
+            border-radius:0px;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar-->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" id="homeLogo" href="./index.html">YugiohDex</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="./index.html">Cards <span class="sr-only">(current)</span></a></li>
+                <li><a href="./Decks.html">Decks</a></li>
+                <li class="active"><a href="./News.html">News</a></li>
+            </ul>
+            <ul id="login" class="nav navbar-nav navbar-right">
+                <li><a href="./Login.html">Login</a></li>
+                <li><a href="./Register.html">Register</a></li>
+            </ul>
+            <ul id="logout" class="nav navbar-nav navbar-right">
+                <li><a id="userGreeting" href="#"></a></li>
+                <li><a onclick="signOut()">Logout</a></li>
+            </ul>
+            <script src="../js/Logout.js"></script>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<!-- button group toggle -->
+<div class="container text-center">
+    <div class="btn-group" role="group">
+        <a class="btn btn-default active" href="#" >Rules</a>
+        <a class="btn btn-default" href="./BannedCards.html">Banned Cards</a>
+        <a class="btn btn-default" href="./Miscellaneous.html">Miscellaneous</a>
+    </div>
+</div>
+
+<hr/>
+
+<!-- news content -->
+<div class="container">
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Draw Phase
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    This is the first phase. The player whose turn it is (the “turn player”) draws 1 card from the top of their Deck. A player with no cards left in their Deck and unable to draw loses the Duel. After you draw, Trap Cards or Quick-Play Spell Cards can be activated before proceeding to the Standby Phase.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Main Phase 1
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                    This is when you play most of your cards: you can Normal Summon, Set, or change the battle position of a monster, activate a card’s effect, and Set Spell and Trap Cards. These actions can be done in any order you want, but some actions have restrictions.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingThree">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Battle Phase
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    Now it is time to battle with your Monster Cards! This phase is divided into steps.
+                    You do not have to conduct a Battle Phase every turn, even if you have a monster on the  eld.
+                    IMPORTANT: The player who goes  rst cannot conduct their Battle Phase on their  rst turn.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingFour">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                        Main Phase 2
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                <div class="panel-body">
+                    If you conducted your Battle Phase, your turn moves to Main Phase 2 afterwards. The actions a player can perform in this phase are the same as in Main Phase 1. However, if the player already did something in Main Phase 1 that has a limit to the number of times it can be done, the player cannot do it again in Main Phase 2. Consider if you want to activate and Set Spell & Trap Cards, or Summon or Set a monster (if you did not do that in Main Phase 1) based on your situation after the Battle Phase. Use this phase to prepare for the opponent’s turn.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingFive">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
+                        End Phase
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                <div class="panel-body">
+                    Announce the end of your turn, and if there are any cards on the  eld which say “...during the End Phase...” in their text, resolve those effects in this phase. If you have more than 6 cards in your hand at the end of this phase, select and discard cards to the Graveyard until you only have 6 cards in your hand.
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- Rules -->
+
+
+<script>
+    function swapContent() {
+        document.getElementById("banned_cards").style.visibility = 'visible';
+    }
+</script>
+
+
+<!--For Bootstrap JS components -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+<!--<script src="../YugiohDex.min.js"></script>-->
+</body>
+</html>

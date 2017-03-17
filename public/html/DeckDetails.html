@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- Bootstrap CSS Components-->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <!-- Firebase Components-->
+    <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+    <script src="../js/Initialize.min.js"></script>
+    <title>Deck Details</title>
+    <style>
+        body {
+            padding-top: 70px;
+        }
+        .navbar {
+            margin-bottom:0px;
+            border-radius:0px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar-->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" id="homeLogo" href="./index.html">YugiohDex</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="./index.html">Cards <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="./Decks.html">Decks</a></li>
+                <li><a href="News.html">News</a></li>
+            </ul>
+            <ul id="login" class="nav navbar-nav navbar-right">
+                <li><a href="./Login.html">Login</a></li>
+                <li><a href="./Register.html">Register</a></li>
+            </ul>
+            <ul id="logout" class="nav navbar-nav navbar-right">
+                <li><a id="userGreeting" href="#"></a></li>
+                <li><a onclick="signOut()">Logout</a></li>
+            </ul>
+            <script src="../js/Logout.js"></script>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+            <a id="backToDecks" href="./Decks.html" role="button" class="btn btn-link"><span class="glyphicon glyphicon-arrow-left"> &nbsp; Top Decks</span></a>
+        </div>
+        <div class="col-sm-8">
+            <h1 class="text-center" id="deckID">Deck Details</h1>
+        </div>
+        <div class="col-sm-2 col-xs-12">
+            <a id="deleteButton" style="visibility: hidden;" href="./Decks.html" role="button" class="btn btn-link"> &nbsp; Delete Deck</a>
+        </div>
+        <div class="col-sm-2 col-xs-12">
+            <a id="editButton" style="visibility: hidden;" href="./CreateDeck.html" role="button" class="btn btn-link"> &nbsp; Edit Deck</a>
+        </div>
+    </div>
+    <hr/>
+    <div class="row" id="cardGalleryRow"></div>
+    <br/>
+    <p>Rating: 200</p>
+    <h4>Comments</h4>
+    <ul class="container list-group" id="commentList">
+        <!--<li class="list-group-item"><blockquote>Kevin's deck is really good at building up defense, but it is kinda slow. I prefer a fasfter deck</blockquote><cite>David James</cite><p>12-14-2016 11:54pm</p></li>-->
+        <!--<li class="list-group-item"><blockquote>Kevin's deck has a nice variety of dragon monsters, but it doesnt have red-eyes</blockquote><cite>David James</cite><p>12-14-2016 11:54pm</p></li>-->
+        <!--<li class="list-group-item"><blockquote>I used Kevin's deck to draw inspiration for my own</blockquote><cite>David James</cite><p>12-14-2016 11:54pm</p></li>-->
+    </ul>
+
+    <br/>
+    <div class="container form-group">
+        <label for="comments">Write a Comment</label>
+        <textarea id="comments" class="form-control" rows="4"></textarea>
+    </div>
+    <div class="row">
+    <div class="col-sm-2 col-sm-offset-10 text-right">
+        <input id="commentBtn" style="margin-bottom:40px;" type="button" class="btn btn-primary" value="submit"/>
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+<div class="modal fade" id="card_detail_modal" tabindex="-1" role="dialog" aria-labelledby="card_detail_label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="nameValueDD">Red Eyes B. Dragon</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-4">
+                        <img id="modalImageDD" src="../images/red.jpg" alt="dragon" class="img-responsive" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer text-left">
+                <p class="text-left"><b>Attack: </b></p>
+                <p class="text-left" id="attackValueDD">2400</p>
+                <p class="text-left"><b>Defense: </b></p>
+                <p class="text-left" id="defenseValueDD">2000</p>
+                <p class="text-left"><b>Description: </b></p>
+                <p class="text-left" id="descriptionValueDD">A ferocious dragon with a deadly attack</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--For Bootstrap JS components -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/DeckDetail.min.js"></script>
+<!--<script src="../YugiohDex.min.js"></script>-->
+</body>
+</html>

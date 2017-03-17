@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- Bootstrap CSS Components-->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <!-- Firebase Components-->
+    <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+    <script src="../js/Initialize.min.js"></script>
+    <!--<script src="YugiohDex.min.js"></script>-->
+    <title>Banned Cards</title>
+    <style>
+        body {
+            padding-top: 70px;
+        }
+        .navbar {
+            margin-bottom:0px;
+            border-radius:0px;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar-->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="./index.html" id="homeLogo">YugiohDex</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="./index.html">Cards <span class="sr-only">(current)</span></a></li>
+                <li><a href="./Decks.html">Decks</a></li>
+                <li class="active"><a href="News.html">News</a></li>
+            </ul>
+            <ul id="login" class="nav navbar-nav navbar-right">
+                <li><a href="./Login.html">Login</a></li>
+                <li><a href="./Register.html">Register</a></li>
+            </ul>
+            <ul id="logout" class="nav navbar-nav navbar-right">
+                <li><a id="userGreeting" href="#"></a></li>
+                <li><a onclick="signOut()">Logout</a></li>
+            </ul>
+            <script src="../js/Logout.js"></script>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<!-- button group toggle -->
+<div class="container text-center">
+    <div class="btn-group" role="group">
+        <a class="btn btn-default" href="News.html">Rules</a>
+        <a class="btn btn-default active" href="#">Banned Cards</a>
+        <a class="btn btn-default" href="Miscellaneous.html">Miscellaneous</a>
+    </div>
+</div>
+
+<hr/>
+
+<!-- news content -->
+<div id="banned_cards">
+    <div class="container input-group">
+        <input type="text" class="form-control" placeholder="Card Name" aria-describedby="search">
+        <span class="input-group-addon" id="search">Search</span>
+    </div>
+    <br/>
+    <br/>
+    <div class="container">
+        <div class="list-group">
+            <button class="list-group-item" data-target="#card_detail_modal" data-toggle="modal"><span class="text-left">Blue Eyes White Dragon</span> <span class="pull-right"><b>Type:</b> Monster &nbsp; <b> Format:</b> TCG</span></button>
+        </div>
+    </div>
+
+    <div class="modal fade" id="card_detail_modal" tabindex="-1" role="dialog" aria-labelledby="card_detail_label">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="card_detail_label">Blue Eyes White Dragon</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-4 col-xs-offset-4">
+                            <img src="../images/blue.jpg" alt="dragon" class="img-responsive" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer text-left">
+                    <p class="text-left"><b>Attack: </b> 3000 &nbsp; <b> Defense: </b> 3000</p>
+                    <p class="text-left"><b>Description:</b> This legendary dragon is a powerful engine of destruction. Virtually invincible, few have faced this awesome creature and lived to tell the tale</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- Banned Cards -->
+
+
+
+<!--For Bootstrap JS components -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<!--<script src="../YugiohDex.min.js"></script>-->
+</body>
+</html>
