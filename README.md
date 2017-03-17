@@ -10,7 +10,7 @@ YugiohDex is a mobile application where users can create an account in order to 
 * Packaging/Porting: / OS X / Windows / Linux
 
 ## Minification & Bundling
-Our Twitter Bootstrap that was used was the minified version. For JS we used jscompress in order to minify and compress our JS files for faster loading.
+Our Twitter Bootstrap that was used was the minified version. For JS we used Yahoo yuicompressor in order to minify and compress our JS files for faster loading.
 
 ###### CSS
 Our CSS was all made by using a minified Twitter Bootstrap this increased performance by only having to request for one file for the CSS.
