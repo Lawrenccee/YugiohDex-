@@ -25,6 +25,8 @@ The images used were uniform images that all had the same aspect ratios to fit o
 
 ## Testing & Usability
 We used an Android Tablet (Samsung Galaxy Tab 3) to test the load times of our website after minification using a 3G network throttle. On our laptops we have also viewed the website on Firefox and Google Chrome to make sure basic functionality was correct. Since there are differences with the aesthetics of browsers appearances might slightly vary.
+On a 3G network we have 1006KB transferred on the load page with a Finish time of 8.29s, which is really high. We believe this could be from our images not being compressed. The DOMContentLoaded was in 2.82s and the Load was 2.81s. For the decks page 417KB was transferred with a finish time of 4.79s, DOMContentLoaded in 2.43s and a Load of 2.39s.
+For the usability the user is able to login and logout just fine. When a user is logged in they are able to see an extra section in the decks with the decks that they have saved on their profile (decks they have created).
 
 ## Performance & Design
 * Used minified our CSS/JS for faster loading
@@ -33,7 +35,7 @@ We used an Android Tablet (Samsung Galaxy Tab 3) to test the load times of our w
 ![App Decks](/public/img/decks.png)
 
 ## File Organization and Architecture
-* Files were named using Pascal Case
+* Files were named using Pascal Case except for index.html, to be linked from the landing page
 * Files were organized using by the type of file, separating HTML, JS, and CSS files in their respective folders. Any images were put into an image folder that was referenced to within the other files to grab and display those images. 
 
 ## Known Issues, Bugs, & Limitations
